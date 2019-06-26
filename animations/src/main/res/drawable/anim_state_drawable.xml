@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- provide a different drawable for each state-->
+    <item
+        android:id="@+id/pressed"
+        android:drawable="@drawable/img_homepage_card_03"
+        android:state_pressed="true" />
+    <item
+        android:id="@+id/focused"
+        android:drawable="@drawable/img_homepage_card_02"
+        android:state_focused="true" />
+    <item
+        android:id="@+id/unpressed"
+        android:drawable="@drawable/img_homepage_card_01"
+        android:state_pressed="false" />
+
+    <!-- specify a transition -->
+    <transition
+        android:fromId="@id/unpressed"
+        android:toId="@+id/pressed">
+        <animation-list>
+            <item
+                android:drawable="@drawable/img_homepage_card_01"
+                android:duration="300" />
+            <item
+                android:drawable="@drawable/img_homepage_card_02"
+                android:duration="300" />
+            <item
+                android:drawable="@drawable/img_homepage_card_03"
+                android:duration="300" />
+        </animation-list>
+    </transition>
+</animated-selector>

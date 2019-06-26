@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:background="#ffffff">
+
+    <views.CustomMaskFilterView
+        android:id="@+id/mask_filter_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/tv_blur_mask_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#0066ff"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="BlurMaskFilter"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:id="@+id/tv_emboss_mask_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/tv_blur_mask_filter"
+        android:background="#0066ff"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="EmbossMaskFilter"
+        android:textColor="#ffffff" />
+
+</RelativeLayout>

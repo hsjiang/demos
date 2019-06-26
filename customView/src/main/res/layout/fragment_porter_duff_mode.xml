@@ -1,0 +1,153 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:clickable="true"
+    tools:context="com.example.riven_chris.myapplication.PorterDuffModeFragment">
+
+    <views.CustomPorterDuffView
+        android:id="@+id/custom_porter_duff_view"
+        android:layout_width="300dp"
+        android:layout_height="225dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/clear"
+            android:text="clear"
+            style="@style/textViewStyle" />
+
+        <TextView
+            android:id="@+id/src"
+            android:text="src"
+            android:layout_marginLeft="10dp"
+            style="@style/textViewStyle" />
+
+        <TextView
+            android:id="@+id/dst"
+            android:text="dst"
+            android:layout_marginLeft="10dp"
+            style="@style/textViewStyle" />
+
+        <TextView
+            android:id="@+id/src_over"
+            android:text="srcOver"
+            android:layout_marginLeft="10dp"
+            style="@style/textViewStyle" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dst_over"
+            android:text="dstOver"
+            style="@style/textViewStyle" />
+
+        <TextView
+            android:id="@+id/src_in"
+            android:text="srcIn"
+            android:layout_marginLeft="10dp"
+            style="@style/textViewStyle" />
+
+        <TextView
+            android:id="@+id/dst_in"
+            android:text="dstIn"
+            android:layout_marginLeft="10dp"
+            style="@style/textViewStyle" />
+
+        <TextView
+            android:id="@+id/src_out"
+            android:text="srcOut"
+            android:layout_marginLeft="10dp"
+            style="@style/textViewStyle" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dst_out"
+            android:text="dstOut"
+            style="@style/textViewStyle" />
+
+        <TextView
+            android:id="@+id/src_top"
+            android:text="srcTop"
+            android:layout_marginLeft="10dp"
+            style="@style/textViewStyle" />
+
+        <TextView
+            android:id="@+id/dst_top"
+            android:text="dstTop"
+            android:layout_marginLeft="10dp"
+            style="@style/textViewStyle" />
+
+        <TextView
+            android:id="@+id/xor"
+            android:text="xor"
+            android:layout_marginLeft="10dp"
+            style="@style/textViewStyle" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/darken"
+            android:text="darken"
+            style="@style/textViewStyle" />
+
+        <TextView
+            android:id="@+id/lighten"
+            android:text="lighten"
+            android:layout_marginLeft="10dp"
+            style="@style/textViewStyle" />
+
+        <TextView
+            android:id="@+id/multiply"
+            android:text="multiply"
+            android:layout_marginLeft="10dp"
+            style="@style/textViewStyle" />
+
+        <TextView
+            android:id="@+id/screen"
+            android:text="screen"
+            android:layout_marginLeft="10dp"
+            style="@style/textViewStyle" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:paddingLeft="20dp">
+
+    <TextView
+        android:id="@+id/tv_set"
+        style="@style/btnStyle"
+        android:text="setBitmap" />
+
+    <views.LifeCycleView
+        android:id="@+id/lifecycle_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>

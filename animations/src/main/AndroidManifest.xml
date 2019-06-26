@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.riven_chris">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".demos.SharedElementTarget2Activity"></activity>
+        <activity android:name=".demos.SharedElementTransitions2Activity" />
+        <activity android:name=".demos.SharedElementTargetActivity" />
+        <activity android:name=".demos.TransitionsActivity" />
+        <activity android:name=".demos.SharedElementTransitionsActivity" />
+        <activity android:name=".demos.LayoutTransitionsActivity" />
+        <activity android:name=".demos.CurvePathAnimatorActivity" />
+        <activity android:name=".demos.AnimatedVectorDrawableActivity" />
+        <activity android:name=".demos.StateListAnimatorActivity" />
+        <activity android:name=".demos.DefaultLayoutTransitionsActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".demos.ClippingCircleActivity"
+            android:label="@string/title_activity_clipping_cicle"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".customs.AnimActivity" />
+    </application>
+
+</manifest>

@@ -1,0 +1,130 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <views.CustomView
+        android:id="@+id/custom_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="20dp"
+        android:paddingLeft="20dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv"
+                style="@style/btnStyle"
+                android:text="start fragment" />
+
+            <TextView
+                android:id="@+id/tv_color_filter"
+                style="@style/btnStyle"
+                android:text="ColorFilter" />
+
+            <TextView
+                android:id="@+id/tv_porter_duff"
+                style="@style/btnStyle"
+                android:text="PorterDuff" />
+
+            <TextView
+                android:id="@+id/tv_eraser_view"
+                style="@style/btnStyle"
+                android:text="EraserView" />
+
+            <TextView
+                android:id="@+id/tv_font_view"
+                style="@style/btnStyle"
+                android:text="FontView" />
+
+            <TextView
+                android:id="@+id/tv_mask_filter_view"
+                style="@style/btnStyle"
+                android:text="MaskFilter" />
+
+            <TextView
+                android:id="@+id/tv_path_effect_view"
+                style="@style/btnStyle"
+                android:text="PathEffectView" />
+
+            <TextView
+                android:id="@+id/tv_ecg_view"
+                style="@style/btnStyle"
+                android:text="ECGView" />
+
+            <TextView
+                android:id="@+id/tv_shader_view"
+                style="@style/btnStyle"
+                android:text="ShaderView" />
+
+            <TextView
+                android:id="@+id/tv_matrix_view"
+                style="@style/btnStyle"
+                android:text="MatrixImg" />
+
+            <TextView
+                android:id="@+id/tv_bitmap_mesh"
+                style="@style/btnStyle"
+                android:text="BitmapMesh" />
+
+            <TextView
+                android:id="@+id/tv_path_view"
+                style="@style/btnStyle"
+                android:text="PathView" />
+
+            <TextView
+                android:id="@+id/tv_clip_view"
+                style="@style/btnStyle"
+                android:text="ClipView" />
+
+            <TextView
+                android:id="@+id/tv_canvas_layer_view"
+                style="@style/btnStyle"
+                android:text="CanvasLayerView" />
+
+            <TextView
+                android:id="@+id/tv_canvas_transform_view"
+                style="@style/btnStyle"
+                android:text="CanvasTranformView" />
+
+            <TextView
+                android:id="@+id/tv_img_view"
+                style="@style/btnStyle"
+                android:text="ImgView" />
+
+            <TextView
+                android:id="@+id/tv_layout_view"
+                style="@style/btnStyle"
+                android:text="LayoutView" />
+
+            <TextView
+                android:id="@+id/tv_lifecycle_view"
+                style="@style/btnStyle"
+                android:text="LifeCycleView" />
+
+            <TextView
+                android:id="@+id/tv_progress_text_view"
+                style="@style/btnStyle"
+                android:text="ProgressTextView" />
+        </LinearLayout>
+
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+</RelativeLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="java.util.Map" />
+
+        <variable
+            name="viewModel"
+            type="com.riven_chris.mvvm.sample.SampleViewModel" />
+
+        <variable
+            name="map"
+            type="Map&lt;String,String>" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".sample.SampleActivity">
+
+        <TextView
+            android:id="@+id/tv_set_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#F5F5F5"
+            android:onClick="setName"
+            android:padding="10dp"
+            android:text="setName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:background="#F5F5F5"
+            android:padding="10dp"
+            android:text="@{viewModel.mName}"
+            app:layout_constraintLeft_toRightOf="@+id/tv_set_name"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_transform_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#F5F5F5"
+            android:onClick="transformName"
+            android:padding="10dp"
+            android:text="transformName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_set_name" />
+
+        <TextView
+            android:id="@+id/tv_map_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:background="#F5F5F5"
+            android:padding="10dp"
+            app:layout_constraintLeft_toRightOf="@id/tv_transform_name"
+            app:layout_constraintTop_toTopOf="@id/tv_transform_name" />
+
+        <TextView
+            android:id="@+id/tv_value1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="#F5F5F5"
+            android:padding="10dp"
+            android:text='@{map["key1"]}'
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_transform_name" />
+
+        <TextView
+            android:id="@+id/tv_value2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="#F5F5F5"
+            android:padding="10dp"
+            android:text="@{map[`key2`]}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_value1" />
+
+        <TextView
+            android:id="@+id/tv_value3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="#F5F5F5"
+            android:padding="10dp"
+            android:text="@{@plurals/count(0,0) +`,`+ @plurals/count(1,6)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_value2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
