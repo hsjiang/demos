@@ -24,6 +24,7 @@ class MainActivity : FragmentActivity() {
         add(Pair("CurvePathAnimator", CurvePathAnimatorActivity::class.java))
         add(Pair("TransitionsActivity", TransitionsActivity::class.java))
         add(Pair("DynamicAnimationActivity", DynamicAnimationActivity::class.java))
+        add(Pair("ZoomAnimationActivity", ZoomAnimationActivity::class.java))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

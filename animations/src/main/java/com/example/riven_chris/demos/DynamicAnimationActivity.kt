@@ -21,18 +21,19 @@ class DynamicAnimationActivity : AppCompatActivity() {
         iv.setOnClickListener {
             val animationX = SpringAnimation(iv, SpringAnimation.SCALE_X, 1f)
                     .apply {
-                        spring.stiffness = SpringForce.STIFFNESS_LOW
-                        spring.dampingRatio = SpringForce.DAMPING_RATIO_MEDIUM_BOUNCY
-                        setStartValue(0.8f)
+                        spring.stiffness = SpringForce.STIFFNESS_HIGH
+                        spring.dampingRatio = SpringForce.DAMPING_RATIO_HIGH_BOUNCY
+                        setStartValue(0.6f)
                     }
             val animationY = SpringAnimation(iv, SpringAnimation.SCALE_Y, 1f)
                     .apply {
                         spring.stiffness = SpringForce.STIFFNESS_LOW
-                        spring.dampingRatio = SpringForce.DAMPING_RATIO_MEDIUM_BOUNCY
-                        setStartValue(0.8f)
+                        spring.dampingRatio = SpringForce.DAMPING_RATIO_HIGH_BOUNCY
+                        setStartValue(0.6f)
                     }
 
             animationX.start()
+//            animationX.animateToFinalPosition(1f)
             animationY.start()
         }
 
