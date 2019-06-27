@@ -1,16 +1,12 @@
 package com.example.riven_chris
 
-import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.transition.Explode
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import android.widget.TextView
-import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +23,7 @@ class MainActivity : FragmentActivity() {
         add(Pair("AnimatedVectorDrawable", AnimatedVectorDrawableActivity::class.java))
         add(Pair("CurvePathAnimator", CurvePathAnimatorActivity::class.java))
         add(Pair("TransitionsActivity", TransitionsActivity::class.java))
+        add(Pair("DynamicAnimationActivity", DynamicAnimationActivity::class.java))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
