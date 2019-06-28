@@ -1,9 +1,10 @@
 package trace.event.putao.com.scraprecyclerview;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ScrapRecyclerViewActivity extends AppCompatActivity {
 
@@ -15,8 +16,8 @@ public class ScrapRecyclerViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrap_recycler_view);
-        rvOuter = (RecyclerView) findViewById(R.id.rv_outer);
-        LinearLayoutManager outerManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        rvOuter =  findViewById(R.id.rv_outer);
+        LinearLayoutManager outerManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         rvOuter.setLayoutManager(outerManager);
         mOuterAdapter = new OuterAdapter(this);
         rvOuter.setAdapter(mOuterAdapter);

@@ -1,10 +1,11 @@
 package trace.event.putao.com.scraprecyclerview;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,16 +32,16 @@ public class ScrollScrapRecyclerViewActivity extends AppCompatActivity {
             data2.add(str);
         }
 
-        rv1 = (RecyclerView) findViewById(R.id.rv1);
-        LinearLayoutManager manager1 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        rv1 = findViewById(R.id.rv1);
+        LinearLayoutManager manager1 = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         rv1.setLayoutManager(manager1);
         rv1.setHasFixedSize(true);
         rv1.setOverScrollMode(View.OVER_SCROLL_NEVER);
         mAdapter1 = new ScrollScrapAdapter1(this, data1);
         rv1.setAdapter(mAdapter1);
 
-        rv2 = (RecyclerView) findViewById(R.id.rv2);
-        LinearLayoutManager manager2 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        rv2 = findViewById(R.id.rv2);
+        LinearLayoutManager manager2 = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         rv2.setLayoutManager(manager2);
         mAdapter2 = new ScrollScrapAdapter2(this, data2);
         rv2.setAdapter(mAdapter2);
