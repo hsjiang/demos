@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewManager
 import android.view.WindowManager
+import android.widget.PopupWindow
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -22,16 +23,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d("windowTest", "decorView: ${window.peekDecorView()}")
+//        Log.d("windowTest", "decorView: ${window.peekDecorView()}")
         super.onCreate(savedInstanceState)
-        Log.d("windowTest", "decorView: ${window.peekDecorView()}")
+//        Log.d("windowTest", "decorView: ${window.peekDecorView()}")
         setContentView(R.layout.activity_main)
-        Log.d("windowTest", "decorView: ${window.peekDecorView()}")
+//        Log.d("windowTest", "decorView: ${window.peekDecorView()}")
 
 
-        tv_second.setOnClickListener{
+        tv_second.setOnClickListener {
             startActivity(Intent(this, SecondActivity::class.java))
         }
+        Log.d("windowTest", "MainActivity windowManager: ${window.windowManager}")
     }
 
     fun test() {
@@ -42,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         val viewManager: ViewManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val view: View
         val dialog: Dialog
+        val popupWindow: PopupWindow
         val toast: Toast
         val viewGroup: ViewGroup
 
