@@ -44,7 +44,7 @@ public class CustomPorterModeView extends View {
     }
 
     public void initRes() {
-        bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.four);
+        bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.img_class_ip_bubu);
     }
 
     @Override

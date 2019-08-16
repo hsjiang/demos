@@ -38,8 +38,6 @@ public class RectMaskedBg extends ImageView {
 
     public RectMaskedBg(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB)
-            setLayerType(LAYER_TYPE_SOFTWARE, null);
     }
 
     void init() {
@@ -67,7 +65,7 @@ public class RectMaskedBg extends ImageView {
         if (maskPaint == null) {
             maskPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         }
-        maskPaint.setMaskFilter(new BlurMaskFilter(6, BlurMaskFilter.Blur.INNER));
+//        maskPaint.setMaskFilter(new BlurMaskFilter(6, BlurMaskFilter.Blur.INNER));
         maskPaint.setColor(color);
         maskPaint.setAlpha(160);
 

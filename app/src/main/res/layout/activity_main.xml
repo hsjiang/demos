@@ -19,8 +19,8 @@
         android:layout_centerInParent="true" />
 
     <com.facebook.drawee.view.SimpleDraweeView
-    android:id="@+id/iv"
-    android:layout_width="108dp"
-    android:layout_height="108dp" />
+        android:id="@+id/iv"
+        android:layout_width="108dp"
+        android:layout_height="108dp" />
 
 </RelativeLayout>

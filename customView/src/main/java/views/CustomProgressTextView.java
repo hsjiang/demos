@@ -3,7 +3,6 @@ package views;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -19,11 +18,11 @@ public class CustomProgressTextView extends View {
         this(context, null);
     }
 
-    public CustomProgressTextView(Context context, @Nullable AttributeSet attrs) {
+    public CustomProgressTextView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public CustomProgressTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CustomProgressTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

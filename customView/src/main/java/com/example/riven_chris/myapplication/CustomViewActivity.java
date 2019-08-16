@@ -1,14 +1,14 @@
 package com.example.riven_chris.myapplication;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.app.Fragment;
 
 import Constant.Constant;
 
 
-public class CustomViewActivity extends FragmentActivity implements View.OnClickListener {
+public class CustomViewActivity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,7 +117,7 @@ public class CustomViewActivity extends FragmentActivity implements View.OnClick
     }
 
     public void startFragment(String className) {
-        getSupportFragmentManager()
+        getFragmentManager()
                 .beginTransaction()
                 .replace(android.R.id.content,
                         Fragment.instantiate(this, className, null)).addToBackStack("")

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.Region;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -17,7 +18,7 @@ import java.util.TimerTask;
  * Created by riven_chris on 15/4/28.
  */
 public class CustomClipView extends View {
-    private Region mRegionA, mRegionB;// 区域A和区域B对象
+    private Rect mRectA, mRectB;// 区域A和区域B对象
     private Paint mPaint;// 绘制边框的Paint
     private Region.Op[] ops = new Region.Op[6];
     private Region.Op op = Region.Op.DIFFERENCE;
@@ -36,8 +37,8 @@ public class CustomClipView extends View {
         mPaint.setStrokeWidth(2);
 
         // 实例化区域A和区域B
-        mRegionA = new Region(100, 100, 300, 300);
-        mRegionB = new Region(200, 200, 400, 400);
+        mRectA = new Rect(100, 100, 300, 300);
+        mRectB = new Rect(200, 200, 400, 400);
 
         ops[0] = Region.Op.DIFFERENCE;
         ops[1] = Region.Op.INTERSECT;
@@ -56,13 +57,13 @@ public class CustomClipView extends View {
         canvas.save();
 
         // 裁剪区域A
-        canvas.clipRegion(mRegionA);
+        canvas.clipRect(mRectA);
 
         if (op == null) {
             Toast.makeText(getContext(), "op is null", Toast.LENGTH_SHORT).show();
         } else {
             // 再通过组合方式裁剪区域B
-            canvas.clipRegion(mRegionB, op);
+            canvas.clipRect(mRectB, op);
         }
 
         // 填充颜色

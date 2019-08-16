@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    android:orientation="vertical"
     android:clickable="true"
+    android:orientation="vertical"
     tools:context="com.example.riven_chris.myapplication.ColorFilterFragment">
 
     <views.CustomColorMatrixView
@@ -14,12 +14,18 @@
     <views.CustomLightingColorView
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp" />
 
     <views.CustomPorterModeView
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:layout_marginTop="20dp" />
+
+    <ImageView
+        android:id="@+id/iv_bubu"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:src="@mipmap/img_class_ip_bubu" />
 
 </LinearLayout>
