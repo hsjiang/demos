@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".sample.MediatorLiveDataActivity">
+
+
+    <TextView
+        android:id="@+id/tvTextA"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="48dp"
+        android:background="#F5F5F5"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@id/tvTextB"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTextB"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#F5F5F5"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvTextA"
+        app:layout_constraintTop_toTopOf="@id/tvTextA" />
+
+    <TextView
+        android:id="@+id/tvA"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="32dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:onClick="clickA"
+        android:text="A"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/tvTextA"
+        app:layout_constraintTop_toBottomOf="@id/tvTextA" />
+
+    <TextView
+        android:id="@+id/tvB"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="32dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:onClick="clickB"
+        android:text="B"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/tvTextB"
+        app:layout_constraintTop_toBottomOf="@id/tvTextB" />
+
+    <TextView
+        android:id="@+id/tvMediator"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="48dp"
+        android:background="#F5F5F5"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvA" />
+
+    <TextView
+        android:id="@+id/tvMapA"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="#F5F5F5"
+        android:gravity="center"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        app:layout_constraintStart_toStartOf="@id/tvA"
+        app:layout_constraintTop_toBottomOf="@id/tvMediator" />
+
+    <TextView
+        android:id="@+id/tvMapB"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="#F5F5F5"
+        android:gravity="center"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        app:layout_constraintStart_toStartOf="@id/tvB"
+        app:layout_constraintTop_toBottomOf="@id/tvMediator" />
+
+    <TextView
+        android:id="@+id/tvSwitchMapA"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="#F5F5F5"
+        android:gravity="center"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        app:layout_constraintStart_toStartOf="@id/tvA"
+        app:layout_constraintTop_toBottomOf="@id/tvMapA" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.riven_chris.mvvm.sample.EventHandlingActivity;
 import com.riven_chris.mvvm.sample.IncludeActivity;
+import com.riven_chris.mvvm.sample.MediatorLiveDataActivity;
 import com.riven_chris.mvvm.sample.SampleActivity;
 
 public class MVVMActivity extends AppCompatActivity {
@@ -29,5 +30,9 @@ public class MVVMActivity extends AppCompatActivity {
 
     public void include(View view) {
         startActivity(new Intent(this, IncludeActivity.class));
+    }
+
+    public void mediatorLiveData(View view) {
+        startActivity(new Intent(this, MediatorLiveDataActivity.class));
     }
 }

@@ -20,7 +20,7 @@ public class BindingAdapters {
 //
 //    }
 
-    @BindingAdapter("android:paddingLeft")
+    @BindingAdapter("bind:paddingLeft")
     public static void setPaddingLeft(View view, int padding) {
         view.setPadding(padding,
                 view.getPaddingTop(),
@@ -31,7 +31,7 @@ public class BindingAdapters {
     //Binding adapter methods may optionally take the old values in their handlers.
     // A method taking old and new values should declare all old values for the attributes first,
     // followed by the new values
-    @BindingAdapter("android:paddingLeft")
+    @BindingAdapter("bind:paddingLeft")
     public static void setPaddingLeft(View view, int oldPadding, int newPadding) {
         if (oldPadding != newPadding) {
             view.setPadding(newPadding,
@@ -59,7 +59,7 @@ public class BindingAdapters {
     }
 
     //<View android:onLayoutChange="@{() -> handler.layoutChanged()}"/>
-    @BindingAdapter("android:onLayoutChange")
+    @BindingAdapter("bind:onLayoutChange")
     public static void setOnLayoutChangeListener(View view, View.OnLayoutChangeListener oldValue,
                                                  View.OnLayoutChangeListener newValue) {
         if (oldValue != null) {
@@ -70,7 +70,7 @@ public class BindingAdapters {
         }
     }
 
-    @BindingAdapter(value = {"android:onViewDetachedFromWindow", "android:onViewAttachedToWindow"}, requireAll = false)
+    @BindingAdapter(value = {"bind:onViewDetachedFromWindow", "android:onViewAttachedToWindow"}, requireAll = false)
     public static void setListener(View view, ViewBindingAdapter.OnViewDetachedFromWindow detach, ViewBindingAdapter.OnViewAttachedToWindow attach) {
         View.OnAttachStateChangeListener newListener;
         if (detach == null && attach == null) {

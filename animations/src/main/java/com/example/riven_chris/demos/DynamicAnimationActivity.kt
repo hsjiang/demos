@@ -23,7 +23,7 @@ class DynamicAnimationActivity : AppCompatActivity() {
                     .apply {
                         spring.stiffness = SpringForce.STIFFNESS_HIGH
                         spring.dampingRatio = SpringForce.DAMPING_RATIO_HIGH_BOUNCY
-                        setStartValue(0.6f)
+                        setStartValue(0.1f)
                     }
             val animationY = SpringAnimation(iv, SpringAnimation.SCALE_Y, 1f)
                     .apply {
@@ -34,7 +34,7 @@ class DynamicAnimationActivity : AppCompatActivity() {
 
             animationX.start()
 //            animationX.animateToFinalPosition(1f)
-            animationY.start()
+//            animationY.start()
         }
 
 
