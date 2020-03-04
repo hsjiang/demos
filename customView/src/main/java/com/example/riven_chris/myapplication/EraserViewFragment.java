@@ -11,6 +11,11 @@ import android.view.ViewGroup;
  */
 public class EraserViewFragment extends Fragment {
 
+    public static EraserViewFragment newInstance() {
+        EraserViewFragment fragment = new EraserViewFragment();
+        return fragment;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.eraser_view_fragment, null);

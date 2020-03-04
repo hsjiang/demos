@@ -3,7 +3,6 @@ package com.example.riven_chris.myapplication;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.app.Fragment;
 
 import Constant.Constant;
 
@@ -116,12 +115,20 @@ public class CustomViewActivity extends Activity implements View.OnClickListener
         }
     }
 
+//    public void startFragment(String className) {
+//        getFragmentManager()
+//                .beginTransaction()
+//                .replace(android.R.id.content,
+//                        Fragment.instantiate(this, className, null)).addToBackStack("")
+//                .commit();
+//    }
+
     public void startFragment(String className) {
-        getFragmentManager()
-                .beginTransaction()
-                .replace(android.R.id.content,
-                        Fragment.instantiate(this, className, null)).addToBackStack("")
-                .commit();
+        getFragmentManager().beginTransaction().add(R.id.container, ColorFilterFragment.newInstance()).addToBackStack("ColorFilterFragment").commit();
+        getFragmentManager().beginTransaction().add(R.id.container, PorterDuffModeFragment.newInstance()).addToBackStack("PorterDuffModeFragment").commit();
+        getFragmentManager().beginTransaction().add(R.id.container, EraserViewFragment.newInstance()).addToBackStack("EraserViewFragment").commit();
+        getFragmentManager().beginTransaction().add(R.id.container, FontViewFragment.newInstance()).addToBackStack("FontViewFragment").commit();
+        getFragmentManager().beginTransaction().add(R.id.container, MaskFilterFragment.newInstance()).addToBackStack("MaskFilterFragment").commit();
     }
 
     public View findView(int id) {
