@@ -1,13 +1,19 @@
 package com.riven_chirs.example.workmanager
 
+import android.app.NotificationManager
+import android.app.job.JobScheduler
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.work.*
+import androidx.work.impl.WorkManagerInitializer
 import kotlinx.android.synthetic.main.activity_work_manager.*
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 import java.util.concurrent.TimeUnit
 
 const val URL = "url"
@@ -21,10 +27,8 @@ class WorkManagerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_work_manager)
 
-//        WorkManager.getInstance(this).cancelAllWorkByTag(WORK_TAG)
-
         btnAddWork.setOnClickListener {
-            setupPeriodicWorkRequest()
+            setupOneTimeWorkRequest()
         }
 
         WorkManager.getInstance(this).getWorkInfosByTagLiveData(WORK_TAG)
@@ -33,12 +37,17 @@ class WorkManagerActivity : AppCompatActivity() {
                         Log.d(LOG_TAG, "work state: " + it.state.name)
                         val progress = it.progress.getInt(PROGRESS, -1)
                         Log.d(LOG_TAG, "work progress: $progress")
+
+//                        val url = it.progress.getString(URL)
+//                        Log.d(LOG_TAG, "work url: $url")
                     }
                 })
+
+        Log.d(LOG_TAG, "main Thread: " + Thread.currentThread())
     }
 
     private fun setupOneTimeWorkRequest() {
-        val url = ""
+        val url = "ssssssssssss"
 
         val constraints = Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.CONNECTED)
@@ -53,7 +62,8 @@ class WorkManagerActivity : AppCompatActivity() {
                 .setInputData(workDataOf(URL to url))//Data 对象的大小上限为 10KB
                 .addTag(WORK_TAG)
                 .build()
-        WorkManager.getInstance(this).enqueue(testWork)
+        WorkManager.getInstance(this).beginUniqueWork("testWork", ExistingWorkPolicy.REPLACE,
+                testWork).enqueue()
     }
 
     private fun setupPeriodicWorkRequest() {
@@ -62,6 +72,8 @@ class WorkManagerActivity : AppCompatActivity() {
                 .build()
         val testWork = PeriodicWorkRequestBuilder<TestWorker>(1, TimeUnit.HOURS)
                 .setConstraints(constraints)
+                .setInputData(workDataOf(URL to "www.baidu.com"))
+                .addTag(WORK_TAG)
                 .build()
         WorkManager.getInstance(this).enqueue(testWork)
     }
@@ -88,24 +100,20 @@ class WorkManagerActivity : AppCompatActivity() {
             Log.d(LOG_TAG, "start TestWorker: " + Thread.currentThread())
             val url = inputData.getString(URL)
             setProgressAsync(workDataOf(PROGRESS to 0))
-
-            Thread.sleep(4000)
+            Thread.sleep(3000)
             setProgressAsync(workDataOf(PROGRESS to 50))
-            Thread.sleep(4000)
-
+            Thread.sleep(3000)
             setProgressAsync(workDataOf(PROGRESS to 100))
+//            delay(3000)
             val outputExtraData = workDataOf(URL to url)
             Log.d(LOG_TAG, "success: hahaha $url")
             return Result.success(outputExtraData)
-        }
-
-        override fun onStopped() {
-            Log.d(LOG_TAG, "stoped")
         }
     }
 
     class SleepWorker(context: Context, parameters: WorkerParameters) :
             CoroutineWorker(context, parameters) {
+
         override suspend fun doWork(): Result {
             Log.d(LOG_TAG, "start SleepWorker: " + Thread.currentThread())
             var i = 0
@@ -116,5 +124,6 @@ class WorkManagerActivity : AppCompatActivity() {
             }
             return Result.success()
         }
+
     }
 }

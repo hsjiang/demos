@@ -26,7 +26,7 @@ public class CustomEraserView extends View {
     private static final int MIN_MOVE_DIS = 5;
 
     private Paint paint = null;
-    private Bitmap bgBitmap = null;
+    //    private Bitmap bgBitmap = null;
     private Bitmap fgBitmap = null;
     private Context context = null;
     private int screenW = 0;
@@ -78,14 +78,17 @@ public class CustomEraserView extends View {
         paint.setStrokeWidth(40);
 
         // 生成前景图Bitmap
-        fgBitmap = Bitmap.createBitmap(screenW, screenH, Bitmap.Config.ARGB_8888);
+//        fgBitmap = Bitmap.createBitmap(screenW, screenH, Bitmap.Config.ARGB_8888);
+        fgBitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.image).copy(Bitmap.Config.ARGB_8888, true);
+        fgBitmap.createScaledBitmap(fgBitmap, screenW, screenH, true);
+
         // 将其注入画布
         mCanvas = new Canvas(fgBitmap);
         // 绘制画布背景为中性灰
-        mCanvas.drawColor(0xFF808080);
+//        mCanvas.drawColor(0xFF808080);
 
-        bgBitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.image);
-        bgBitmap.createScaledBitmap(bgBitmap, screenW, screenH, true);
+//        bgBitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.image);
+//        bgBitmap.createScaledBitmap(bgBitmap, screenW, screenH, true);
     }
 
     public void initRes() {
@@ -95,7 +98,7 @@ public class CustomEraserView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawBitmap(bgBitmap, 0, 0, null);
+//        canvas.drawBitmap(bgBitmap, 0, 0, null);
         canvas.drawBitmap(fgBitmap, 0, 0, null);
 
         /*
