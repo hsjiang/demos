@@ -3,24 +3,37 @@ package com.riven.coroutinestest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.activity_coroutines.*
-import kotlinx.android.synthetic.main.activity_coroutines.view.*
 import kotlinx.coroutines.*
 
 class CoroutinesActivity : AppCompatActivity() {
     private lateinit var mViewModel: MainViewModel
 
+    private lateinit var startWhenResumedJob: Job
+
+    private var loadingJob: Job? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coroutines)
         mViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        start.setOnClickListener {
+        tvStart.setOnClickListener {
 //            myGlobalLaunch()
 //            myRunBlocking()
 //            myCoroutineScope()
             mViewModel.loadData()
+        }
+
+        tvLoading.setOnClickListener {
+            showLoading(10000L)
+        }
+
+        tvCancel.setOnClickListener {
+            loadingJob?.cancel()
         }
 
         mViewModel.loading.observe(this, Observer {
@@ -30,6 +43,39 @@ class CoroutinesActivity : AppCompatActivity() {
         mViewModel.uiData.observe(this, Observer {
             tvResult.text = it
         })
+
+        startWhenResumedJob = lifecycleScope.launchWhenResumed {
+            println("startWhenResumedJob started ")
+            delay(10000)
+            println("startWhenResumedJob finished ")
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        println("onResume")
+        println("active: ${startWhenResumedJob.isActive},canceled: ${startWhenResumedJob.isCancelled}")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        println("onPause")
+        println("active: ${startWhenResumedJob.isActive},canceled: ${startWhenResumedJob.isCancelled}")
+    }
+
+    private fun showLoading(mills: Long) {
+        loadingJob = lifecycleScope.launch {
+            try {
+                progressBar.visibility = View.VISIBLE
+                delay(mills)
+                progressBar.visibility = View.GONE
+            } finally {
+                println("finally isActive: ${isActive}")
+                if (lifecycle.currentState >= Lifecycle.State.STARTED) {
+                    progressBar.visibility = View.GONE
+                }
+            }
+        }
     }
 
     private fun myGlobalLaunch() {

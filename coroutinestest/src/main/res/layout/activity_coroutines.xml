@@ -8,13 +8,38 @@
     tools:context=".CoroutinesActivity">
 
     <TextView
-        android:id="@+id/start"
-        android:layout_width="60dp"
+        android:id="@+id/tvStart"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:background="#ccc"
         android:gravity="center"
-        android:text="start"
+        android:paddingHorizontal="15dp"
+        android:text="loadData"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="15dp"
+        android:background="#ccc"
+        android:gravity="center"
+        android:paddingHorizontal="15dp"
+        android:text="loading"
+        app:layout_constraintStart_toEndOf="@id/tvStart"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="15dp"
+        android:background="#ccc"
+        android:gravity="center"
+        android:paddingHorizontal="15dp"
+        android:text="cancel"
+        app:layout_constraintStart_toEndOf="@id/tvLoading"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
