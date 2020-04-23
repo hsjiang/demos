@@ -55,12 +55,12 @@ public class CustomCanvasLayerView extends View {
         canvas.drawRect(x - 200, y - 200, x + 200, y + 200, paint);
 
 
-        int i1 = canvas.save(Canvas.CLIP_SAVE_FLAG);
+        int i1 = canvas.save();
         canvas.clipRect(x - 150, y - 150, x + 150, y + 150);
         canvas.drawColor(Color.GREEN);
 //        canvas.restoreToCount(i1);
 
-        int i2 = canvas.save(Canvas.MATRIX_SAVE_FLAG);
+        int i2 = canvas.save();
         canvas.rotate(5);
         canvas.drawRect(x - 100, y - 100, x + 100, y + 100, paint3);
         canvas.restoreToCount(i2);
