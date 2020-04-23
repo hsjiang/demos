@@ -10,6 +10,10 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.activity_coroutines.*
 import kotlinx.coroutines.*
 
+/**
+ * for test: https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/
+ */
+
 class CoroutinesActivity : AppCompatActivity() {
     private lateinit var mViewModel: MainViewModel
 

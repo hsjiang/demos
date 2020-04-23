@@ -26,7 +26,7 @@ class PagingActivity : AppCompatActivity() {
         rvList.adapter = mAdapter
 
         mViewModel.items.observe(this, Observer {
-            mAdapter.submitList(it)
+//            mAdapter.submitList(it)
         })
     }
 }
