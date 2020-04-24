@@ -4,20 +4,26 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.util.Log
+import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.ColorInt
+import androidx.annotation.IntDef
 import kotlin.math.abs
 
 val TAG_EVENT_ACTION = "event_action"
 val TAG_CAVANS_DRAW = "cavans_draw"
 
 class PaintToolView : View {
-    enum class Mode {
-        LINE,
-        ARROW,
-        ERASER
+    companion object {
+        const val LINE: Int = 1
+        const val ARROW: Int = 2
+        const val ERASER: Int = 3
     }
+
+    @Retention(AnnotationRetention.SOURCE)
+    @IntDef(LINE, ARROW, ERASER)
+    annotation class EditMode
 
     private val INVALID_POINTER = -1
     private val MIN_MOVE_DIS = 5
@@ -32,8 +38,13 @@ class PaintToolView : View {
     private val mCanvas: Canvas = Canvas()
     private var mBitmap: Bitmap? = null
     private var mColor: Int = Color.RED
+    private var mPaintWidth =
+        TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4f, resources.displayMetrics)
 
     private var mPathList = arrayListOf<DrawShape>()
+
+    @EditMode
+    private var mEditMode = LINE
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attributeSet: AttributeSet?) : super(context, attributeSet)
@@ -48,6 +59,11 @@ class PaintToolView : View {
             if (left != oldLeft || top != oldTop || right != oldRight || bottom != oldBottom) {
                 mBitmap = Bitmap.createBitmap(right - left, bottom - top, Bitmap.Config.ARGB_8888)
                 mCanvas.setBitmap(mBitmap)
+                val bgPaint = Paint().apply {
+                    style = Paint.Style.FILL
+                    color = Color.GRAY
+                }
+                mCanvas.drawRect(Rect(left, top, right, bottom), bgPaint)
                 invalidate()
             }
         }
@@ -128,6 +144,10 @@ class PaintToolView : View {
         mDrawShape?.changeColor(mColor)
     }
 
+    fun setEditMode(@EditMode mode: Int) {
+        mEditMode = mode
+    }
+
     override fun onDraw(canvas: Canvas?) {
         mBitmap?.also { canvas?.drawBitmap(it, 0f, 0f, null) }
     }
@@ -140,7 +160,25 @@ class PaintToolView : View {
 
     private fun onDown(x: Float, y: Float) {
         if (mDrawShape == null) {
-            mDrawShape = PathShape(mColor)
+            if (mEditMode == LINE) {
+                val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+                    color = mColor
+                    style = Paint.Style.STROKE
+                    strokeWidth = mPaintWidth
+                    strokeCap = Paint.Cap.ROUND
+                    strokeJoin = Paint.Join.ROUND
+                }
+                mDrawShape = PathShape(paint)
+            } else if (mEditMode == ERASER) {
+                val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+                    color = Color.TRANSPARENT
+                    style = Paint.Style.STROKE
+                    strokeWidth = 80f
+                    strokeCap = Paint.Cap.ROUND
+                    xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_IN)
+                }
+                mDrawShape = EraserShape(paint)
+            }
         }
         mDrawShape?.down(x, y)
         mDrawShape?.draw(mCanvas)
@@ -155,22 +193,13 @@ class PaintToolView : View {
     private interface DrawShape {
         fun down(x: Float, y: Float)
         fun move(x1: Float, y1: Float, x2: Float, y2: Float)
-        fun up(x: Float, y: Float){}
+        fun up(x: Float, y: Float) {}
         fun draw(canvas: Canvas)
-        fun changeColor(@ColorInt color: Int){}
+        fun changeColor(@ColorInt color: Int) {}
     }
 
-    private class PathShape(@ColorInt color: Int) : DrawShape {
-        private val paint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private class PathShape(val paint: Paint) : DrawShape {
         private val path: Path = Path()
-
-        init {
-            paint.color = color
-            paint.style = Paint.Style.STROKE
-            paint.strokeWidth = 15f
-            paint.strokeCap = Paint.Cap.ROUND
-            paint.strokeJoin = Paint.Join.ROUND
-        }
 
         override fun down(x: Float, y: Float) {
             path.moveTo(x, y)
@@ -189,29 +218,46 @@ class PaintToolView : View {
         }
     }
 
-    private class ArrowShape(@ColorInt color: Int) : DrawShape {
-        private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private class ArrowShape(val paint: Paint, val initialX: Float, val initialY: Float) :
+        DrawShape {
         private val rectF = RectF(0f, 0f, 0f, 0f)
         private val trianglePath = Path()
 
         override fun down(x: Float, y: Float) {
-            TODO("Not yet implemented")
+            if (x != initialX || y != initialY) {
+
+            }
         }
 
         override fun move(x1: Float, y1: Float, x2: Float, y2: Float) {
-            TODO("Not yet implemented")
-        }
 
-        override fun up(x: Float, y: Float) {
-            TODO("Not yet implemented")
         }
 
         override fun draw(canvas: Canvas) {
-
+            canvas.drawRect(rectF, paint)
+            canvas.drawPath(trianglePath, paint)
         }
 
         override fun changeColor(color: Int) {
-            TODO("Not yet implemented")
+            paint.color = color
+        }
+    }
+
+    private class EraserShape(val paint: Paint) : DrawShape {
+
+        private val path = Path()
+
+        override fun down(x: Float, y: Float) {
+            path.addCircle(x, y, 20f, Path.Direction.CW)
+            path.moveTo(x, y)
+        }
+
+        override fun move(x1: Float, y1: Float, x2: Float, y2: Float) {
+            path.quadTo(x1, y1, (x2 + x1) / 2, (y2 + y1) / 2)
+        }
+
+        override fun draw(canvas: Canvas) {
+            canvas.drawPath(path, paint)
         }
     }
 

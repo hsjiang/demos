@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_paint_tool.*
+import views.PaintToolView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,6 +42,12 @@ class PaintToolFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         btnUndo.setOnClickListener {
             toolView.unDo()
+        }
+        btnEraser.setOnClickListener {
+            toolView.setEditMode(PaintToolView.ERASER)
+        }
+        btnLine.setOnClickListener {
+            toolView.setEditMode(PaintToolView.LINE)
         }
     }
 
