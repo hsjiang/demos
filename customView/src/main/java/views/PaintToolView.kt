@@ -315,7 +315,7 @@ class PaintToolView : View {
         }
     }
 
-    private class EraserShape() : DrawShape {
+    private class EraserShape : DrawShape {
         private val path = Path()
         private val circlePath = Path()
 
