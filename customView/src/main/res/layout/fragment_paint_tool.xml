@@ -29,6 +29,13 @@
         android:text="line"
         app:layout_constraintStart_toEndOf="@id/btnEraser" />
 
+    <Button
+        android:id="@+id/btnArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="arrow"
+        app:layout_constraintStart_toEndOf="@id/btnLine" />
+
     <views.PaintToolView
         android:id="@+id/toolView"
         android:layout_width="match_parent"

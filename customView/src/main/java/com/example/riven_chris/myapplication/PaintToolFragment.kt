@@ -49,6 +49,9 @@ class PaintToolFragment : Fragment() {
         btnLine.setOnClickListener {
             toolView.setEditMode(PaintToolView.LINE)
         }
+        btnArrow.setOnClickListener {
+            toolView.setEditMode(PaintToolView.ARROW)
+        }
     }
 
     companion object {
