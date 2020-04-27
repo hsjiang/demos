@@ -8,10 +8,7 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.ColorInt
 import androidx.annotation.IntDef
-import kotlin.math.abs
-import kotlin.math.max
-import kotlin.math.min
-import kotlin.math.sqrt
+import kotlin.math.*
 
 val TAG_EVENT_ACTION = "event_action"
 val TAG_CAVANS_DRAW = "cavans_draw"
@@ -293,8 +290,8 @@ class PaintToolView : View {
         private fun drawArrow(newX: Float, newY: Float) {
             val distanceX = newX - initialX
             val distanceY = newY - initialY
-            val distance = sqrt(distanceX * distanceX + distanceY * distanceY)
-            val strokeWidth = min(max(distance * 0.05f, minStrokeWidth), maxStrokeWidth)
+            val lineLength = sqrt(distanceX * distanceX + distanceY * distanceY)
+            val strokeWidth = min(max(lineLength * 0.05f, minStrokeWidth), maxStrokeWidth)
 
             linePaint.strokeWidth = strokeWidth
             linePath.reset()
@@ -302,6 +299,8 @@ class PaintToolView : View {
             val x = if (distanceX <= 0) newX + 5f else newX
             val y = if (distanceY <= 0) newY + 5f else newY
             linePath.lineTo(x, y)
+
+            drawArrow(initialX, initialY, x, y, trianglePath)
         }
 
         override fun draw(canvas: Canvas) {
@@ -312,6 +311,40 @@ class PaintToolView : View {
         override fun changeColor(color: Int) {
             linePaint.color = color
             trianglePaint.color = color
+        }
+
+        private fun drawArrow(
+            initialX: Float,
+            initialY: Float,
+            lineEndX: Float,
+            lineEndY: Float,
+            path: Path
+        ) {
+            val radius: Float
+            val triangleH: Float
+
+            val startX = lineEndX
+            val startY = lineEndY
+
+            val x = lineEndX - initialX
+            val y = lineEndY - initialY
+            val d = x * x + y * y
+            val r = sqrt(d)
+            radius = min(max(r * 0.05f, 1f), 8f)
+            triangleH = min(max(r * 0.2f, 5f), 30f)
+            val endX = lineEndX + (triangleH * x / r)
+            val endY = lineEndY + (triangleH * y / r)
+            val xz = endX - startX
+            val yz = endY - startY
+            val zd = xz * xz + yz * yz
+            val zr = sqrt(zd)
+
+            path.reset()
+            path.moveTo(startX, startY)
+            path.lineTo((lineEndX + radius * 2 * yz / zr), (lineEndY - radius * 2 * xz / zr))
+            path.lineTo(endX, endY)
+            path.lineTo((startX - radius * 2 * yz / zr), (startY + radius * 2 * xz / zr))
+            path.close()
         }
     }
 
