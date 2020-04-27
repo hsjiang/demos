@@ -36,7 +36,7 @@ class PaintToolView : View {
     private var mDrawShape: DrawShape? = null
     private val mCanvas: Canvas = Canvas()
     private var mBitmap: Bitmap? = null
-    private var mColor: Int = Color.RED
+    private var mColor: Int = Color.TRANSPARENT
 
     private var mShapeList = arrayListOf<DrawShape>()
 
@@ -62,11 +62,11 @@ class PaintToolView : View {
     }
 
     private fun setBg() {
-        val bgPaint = Paint().apply {
-            style = Paint.Style.FILL
-            color = Color.GRAY
-        }
-        mCanvas.drawRect(Rect(left, top, right, bottom), bgPaint)
+//        val bgPaint = Paint().apply {
+//            style = Paint.Style.FILL
+//            color = Color.GRAY
+//        }
+//        mCanvas.drawRect(Rect(left, top, right, bottom), bgPaint)
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
