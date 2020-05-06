@@ -3,6 +3,7 @@ package com.riven.coroutinestest
 import android.util.Log
 import androidx.lifecycle.*
 import kotlinx.coroutines.*
+import java.lang.Exception
 
 /**
  * https://developer.android.com/topic/libraries/architecture/coroutines
@@ -30,9 +31,22 @@ class MainViewModel : ViewModel() {
     }
 
     fun loadData() {
+//        viewModelScope.launch {
+//            showSomeData()
+//            Log.d("CoroutineTest", "data showed")
+//        }
+
         viewModelScope.launch {
-            showSomeData()
-            Log.d("CoroutineTest", "data showed")
+            Log.d("CoroutineTest", "wait withTimeout")
+            try {
+                withTimeout(3000) {
+                    delay(5000)
+                }
+            } catch (e: Exception) {
+                Log.d("CoroutineTest", "${e.message}")
+                e.printStackTrace()
+            }
+            Log.d("CoroutineTest", "TimeOut")
         }
     }
 
@@ -59,5 +73,24 @@ class MainViewModel : ViewModel() {
             loading.value = false
             uiData.value = result
         }
+    }
+
+    fun cancelRepeat() {
+        viewModelScope.launch {
+            val job = launch {
+                repeat(10) {
+                    delay(500L)
+                    println("I am sleeping $it")
+                }
+            }
+
+            delay(1600)
+            println("I'm tired of waiting")
+//            job.cancel()
+//            job.join()
+            job.cancelAndJoin()
+            println("launch finished")
+        }
+        println("launched")
     }
 }

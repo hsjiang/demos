@@ -40,6 +40,10 @@ class CoroutinesActivity : AppCompatActivity() {
             loadingJob?.cancel()
         }
 
+        tvCancelRepeat.setOnClickListener {
+            mViewModel.cancelRepeat()
+        }
+
         mViewModel.loading.observe(this, Observer {
             progressBar.visibility = if (it) View.VISIBLE else View.GONE
         })
@@ -74,7 +78,7 @@ class CoroutinesActivity : AppCompatActivity() {
                 delay(mills)
                 progressBar.visibility = View.GONE
             } finally {
-                println("finally isActive: ${isActive}")
+                println("finally isActive: $isActive")
                 if (lifecycle.currentState >= Lifecycle.State.STARTED) {
                     progressBar.visibility = View.GONE
                 }

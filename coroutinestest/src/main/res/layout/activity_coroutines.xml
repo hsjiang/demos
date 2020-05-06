@@ -65,4 +65,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tvCancelRepeat"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="#ccc"
+        android:gravity="center"
+        android:paddingHorizontal="15dp"
+        android:text="cancelRepeat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
