@@ -1,12 +1,8 @@
-package audiorecorder.buihha.com.webviewtest;
+package com.example.riven_chis.webviewtest;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +11,16 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import audiorecorder.buihha.com.webviewtest.R;
 
 /**
  * Created by riven_chris on 2016/12/4.

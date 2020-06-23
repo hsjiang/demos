@@ -1,9 +1,7 @@
-package audiorecorder.buihha.com.webviewtest;
+package com.example.riven_chis.webviewtest;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
@@ -14,6 +12,11 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import audiorecorder.buihha.com.webviewtest.R;
 
 /**
  * Created by riven_chris on 2016/12/4.
@@ -58,8 +61,6 @@ public class PTH5TestActivity extends AppCompatActivity implements View.OnClickL
     private void setSettings(WebView wv) {
         WebSettings settings = wv.getSettings();
         settings.setJavaScriptEnabled(true);
-        settings.setAppCacheEnabled(true);
-        settings.setDatabaseEnabled(true);
         wv.setWebChromeClient(new WebChromeClient() {
 
         });
