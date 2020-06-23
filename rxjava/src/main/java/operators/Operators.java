@@ -30,7 +30,7 @@ public class Operators {
 
 
     public static void main(String[] args) {
-        filter();
+        concat();
     }
 
     public static void map() {
@@ -119,6 +119,26 @@ public class Operators {
             @Override
             public void onNext(Course course) {
                 Log.d(TAG, course.getName());
+            }
+        });
+    }
+
+    public static void concat() {
+        Observable<String> observable1 = Observable.just("1,2").delay(3, TimeUnit.SECONDS);
+        Observable<String> observable2 = Observable.just("3,4,5").delay(1, TimeUnit.SECONDS);
+        Observable.concat(observable1, observable2).subscribe(new Subscriber<String>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+            }
+
+            @Override
+            public void onNext(String s) {
+                System.out.println("value: " + s);
             }
         });
     }

@@ -1,9 +1,12 @@
 package com.example.riven_chris.rxjava;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.concurrent.TimeUnit;
 
 import operators.Subjects;
 import rx.Observable;
@@ -32,7 +35,25 @@ public class RxActivity extends AppCompatActivity {
 
     public void initView() {
         iv = (ImageView) findViewById(R.id.iv);
-        Subjects.asyncSubject();
+//        Subjects.asyncSubject();
+
+        Observable<String> observable1 = Observable.just("1,2").delay(3, TimeUnit.SECONDS);
+        Observable<String> observable2 = Observable.just("3,4,5").delay(1, TimeUnit.SECONDS);
+        Observable.concat(observable2,observable1 ).subscribe(new Subscriber<String>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+            }
+
+            @Override
+            public void onNext(String s) {
+                Log.d(TAG, "value: " + s);
+            }
+        });
     }
 
 
