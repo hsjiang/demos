@@ -17,10 +17,16 @@ class LottieTestActivity : AppCompatActivity() {
 //        lottieView.setMinFrame(0)
 //        lottieView.setMaxProgress(0.1f)
         tvLoad.setOnClickListener {
-            lottieView.scale = 0.2f
-            lottieView.setAnimation("lottie2.json")
+//            lottieView.setAnimation("lottie2.json")
+            lottieView.setAnimationFromUrl("https://weidu-file.putaocdn.com/file/c34ba5fe312aa16497dabe93cd55e0174d9d7d62.json")
+            lottieView.loop(true)
+            lottieView.playAnimation()
         }
 
+        showMemorySize()
+    }
+
+    private fun showMemorySize() {
         val memorySize = Runtime.getRuntime().maxMemory() / 1024 / 1024
         tvLoad.text = memorySize.toString()
         Log.d("memorySize", "memorySize: $memorySize")

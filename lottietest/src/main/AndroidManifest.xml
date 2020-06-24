@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.riven_chris.lottietest">
 
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 获取网络状态 -->
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
