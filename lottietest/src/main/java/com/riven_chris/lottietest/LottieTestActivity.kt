@@ -16,9 +16,9 @@ class LottieTestActivity : AppCompatActivity() {
 //        lottieView.setMaxFrame(1)
 //        lottieView.setMinFrame(0)
 //        lottieView.setMaxProgress(0.1f)
+        lottieView.setAnimation("bubu_download_anim.json")
         tvLoad.setOnClickListener {
 //            lottieView.setAnimation("lottie2.json")
-            lottieView.setAnimationFromUrl("https://weidu-file.putaocdn.com/file/c34ba5fe312aa16497dabe93cd55e0174d9d7d62.json")
             lottieView.loop(true)
             lottieView.playAnimation()
         }
