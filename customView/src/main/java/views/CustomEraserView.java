@@ -11,7 +11,9 @@ import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.os.Build;
+import android.os.Debug;
 import android.util.AttributeSet;
+import android.view.Choreographer;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -41,6 +43,7 @@ public class CustomEraserView extends View {
         this.context = context;
         initRes();
         initPaint();
+//        Choreographer
     }
 
     public CustomEraserView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -99,6 +102,7 @@ public class CustomEraserView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
 //        canvas.drawBitmap(bgBitmap, 0, 0, null);
+//        Debug.startMethodTracing("Eraser.trace");
         canvas.drawBitmap(fgBitmap, 0, 0, null);
 
         /*
@@ -109,6 +113,7 @@ public class CustomEraserView extends View {
          * 所以我们会得到“橡皮擦”的效果
          */
         mCanvas.drawPath(path, paint);
+//        Debug.stopMethodTracing();
     }
 
     @Override

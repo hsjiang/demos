@@ -20,15 +20,14 @@ import java.util.TimerTask;
 public class CustomClipView extends View {
     private Rect mRectA, mRectB;// 区域A和区域B对象
     private Paint mPaint;// 绘制边框的Paint
-    private Region.Op[] ops = new Region.Op[6];
+    private Region.Op[] ops = new Region.Op[2];
     private Region.Op op = Region.Op.DIFFERENCE;
     private int i = 1;
 
     public CustomClipView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        if (Build.VERSION.SDK_INT > 11)
-            setLayerType(LAYER_TYPE_SOFTWARE, null);
+        setLayerType(LAYER_TYPE_SOFTWARE, null);
 
         // 实例化画笔并设置属性
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
@@ -42,11 +41,6 @@ public class CustomClipView extends View {
 
         ops[0] = Region.Op.DIFFERENCE;
         ops[1] = Region.Op.INTERSECT;
-        ops[2] = Region.Op.UNION;
-        ops[3] = Region.Op.XOR;
-        ops[4] = Region.Op.REVERSE_DIFFERENCE;
-        ops[5] = Region.Op.REPLACE;
-
     }
 
     @Override
@@ -62,7 +56,6 @@ public class CustomClipView extends View {
         if (op == null) {
             Toast.makeText(getContext(), "op is null", Toast.LENGTH_SHORT).show();
         } else {
-            // 再通过组合方式裁剪区域B
             canvas.clipRect(mRectB, op);
         }
 
